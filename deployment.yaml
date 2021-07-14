@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-demo-app
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: argocd-demo-app
+  template:
+    metadata:
+      labels:
+        app: argocd-demo-app
+    spec:
+      containers:
+        - image: gcr.io/gke-ci-cd/github.com/sntkn/argocd-demo-app
+          name: argocd-demo-app
+          ports:
+            - containerPort: 80
