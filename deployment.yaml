@@ -5,6 +5,7 @@ metadata:
 spec:
   replicas: 1
   revisionHistoryLimit: 3
+  progressDeadlineSeconds: 300
   selector:
     matchLabels:
       app: argocd-demo-app
@@ -14,7 +15,7 @@ spec:
         app: argocd-demo-app
     spec:
       containers:
-        - image: gcr.io/gke-ci-cd/github.com/sntkn/argocd-demo-app
+        - image: gcr.io/gke-ci-cd/github.com/sntkn/argocd-demo-app:0.0.2
           name: argocd-demo-app
           ports:
             - containerPort: 80
